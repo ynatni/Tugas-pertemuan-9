@@ -1,0 +1,27 @@
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    char namapelanggan[50];
+    char produk[50];
+    char pesan[200] = "terima kasih, ";
+    char pesanantambahan[] = ": pesanan anda untuk produk ";
+
+    printf("masukkan nama pelanggan: ");
+    fgets(namapelanggan, sizeof(namapelanggan), stdin);
+
+    printf("masukkan nama produk: ");
+    fgets(produk, sizeof(produk), stdin);
+
+    
+    namapelanggan[strcspn(namapelanggan, "\n")] = 0;
+    produk[strcspn(produk, "\n")] = 0;
+
+    strcat(pesan, namapelanggan);
+    strcat(pesan, produk);
+    strcat(pesan, "telah berhasil diproses.");
+
+    printf("%s\n", pesan);
+    return 0;
+}
