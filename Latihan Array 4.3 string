@@ -3,25 +3,31 @@
 
 int main()
 {
+    // deklarasi string
     char namapelanggan[50];
     char produk[50];
     char pesan[200] = "terima kasih, ";
     char pesanantambahan[] = ": pesanan anda untuk produk ";
 
+    // meminta input
     printf("masukkan nama pelanggan: ");
     fgets(namapelanggan, sizeof(namapelanggan), stdin);
 
     printf("masukkan nama produk: ");
     fgets(produk, sizeof(produk), stdin);
 
-    
+    // menghapus karakter new line
     namapelanggan[strcspn(namapelanggan, "\n")] = 0;
     produk[strcspn(produk, "\n")] = 0;
 
+    // menggabungkan nama pelanggan
     strcat(pesan, namapelanggan);
+
+    strcat(pesan, pesantambahan);
     strcat(pesan, produk);
     strcat(pesan, "telah berhasil diproses.");
 
+    // menampilkan pesan akhir
     printf("%s\n", pesan);
     return 0;
 }
