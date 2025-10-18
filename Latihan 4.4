@@ -1,0 +1,43 @@
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    // deklarasi
+    char namapelanggan[50];
+    char produk[5][50];
+    float harga[5];
+    float total = 0;
+
+    // meminta input
+    printf("masukkan nama pelanggan: ");
+    fgets(namapelanggan, sizeof(namapelanggan), stdin);
+    namapelanggan[strcspn(namapelanggan, "\n")] = 0;
+   
+
+    // meminta input nama produk dan harganya
+    for (int i = 0; i < 5; i++) {
+        printf("masukkan nama produk %d: ", i+1);
+        fgets(produk[i], sizeof(produk[i]), stdin);
+        produk[i] [strcspn(produk[i], "\n")] = '\0';
+
+        printf("masukkan harga produk %d: ", i+1);
+        scanf("%f", &harga[i]);
+
+    // tambahkan harga ke total
+    total += harga[i];
+    // mengabaikan newline di input buffer
+    getchar();
+
+    }
+
+    // menampilkan ringkasan pembeliah
+    printf("\n--- Ringkasan Pembelian ---\n");
+    printf("Nama Pelanggan: %s\n", namapelanggan);
+    for (int i = 0; i < 5; i++) {
+        printf("produk %d: %s - harga: Rp %.2f\n", i+1, produk[i], harga[i]);
+    }
+    printf("total pembelian: Rp %.2f\n", total);
+
+    return 0;
+}
