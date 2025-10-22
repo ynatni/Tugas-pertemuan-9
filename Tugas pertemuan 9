@@ -1,0 +1,79 @@
+#include <stdio.h>
+
+int main() {
+    int i, j, k;
+    int totalproduk2 = 0;
+    int penjualan_spesifik;
+
+    int penjualan[2][3][4][5] = {
+        // wilayah Asia (0)
+        {
+            // Negara 1
+            {
+                {10, 25, 5, 15, 30}, 
+                {20, 35, 15, 5, 40},  
+                {5, 10, 30, 20, 25}, 
+                {15, 40, 25, 10, 5}  
+            },
+            // Negara 2
+            {
+                {50, 15, 45, 25, 35}, 
+                {30, 5, 10, 40, 50},  
+                {40, 20, 5, 35, 15},  
+                {25, 30, 15, 50, 10}  
+            },
+            // Negara 3
+            {
+                {5, 45, 10, 50, 20},  
+                {10, 50, 5, 45, 25},  
+                {15, 5, 20, 40, 30},  
+                {20, 10, 25, 35, 40}  
+            }
+        },
+
+        // wilayah Eropa (1)
+        {
+            // Negara 1
+            {
+                {30, 20, 10, 5, 45}, 
+                {40, 10, 5, 15, 50}, 
+                {50, 5, 15, 20, 10}, 
+                {10, 15, 20, 25, 30} 
+            },
+            // Negara 2
+            {
+                {15, 35, 40, 5, 20},  
+                {25, 45, 5, 10, 30},  
+                {35, 50, 10, 15, 40}, 
+                {45, 5, 15, 20, 50}   
+            },
+            // Negara 3
+            {
+                {5, 25, 30, 40, 10}, 
+                {10, 30, 35, 5, 15}, 
+                {20, 40, 5, 10, 25}, 
+                {30, 5, 10, 15, 45}  
+            }
+        }
+    };
+
+    // Deklarasi dan isi penjualan spesifik dulu
+    penjualan_spesifik = penjualan[0][0][1][2]; // Asia, Negara 1, Toko 2, Produk 3
+
+    printf("============================================================\n");
+    printf("1. Penjualan untuk Wilayah Asia, Negara 1, Toko 2, Produk 3: %d\n", penjualan_spesifik);
+
+    // Hitung total untuk Produk 2 (indeks ke-1)
+    for (i = 0; i < 2; i++) { // wilayah
+        for (j = 0; j < 3; j++) { // negara
+            for (k = 0; k < 4; k++) { // toko
+                totalproduk2 += penjualan[i][j][k][1];
+            }
+        }
+    }
+
+    printf("2. Total penjualan untuk Produk 2 di semua toko, negara, dan wilayah: %d\n", totalproduk2);
+    printf("============================================================\n");
+
+    return 0;
+}
